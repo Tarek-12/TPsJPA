@@ -1,8 +1,6 @@
 package dao;
 
-import javafx.css.Styleable;
 import models.Facture;
-
 import javax.persistence.*;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
