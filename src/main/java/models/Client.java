@@ -1,20 +1,16 @@
 package models;
 
-
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 import javax.persistence.*;
 import java.util.List;
 
-@Getter
-@Setter
-@AllArgsConstructor
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Data
 @Entity
 public class Client {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.TABLE)
     private long id_client;
     private String name;
 

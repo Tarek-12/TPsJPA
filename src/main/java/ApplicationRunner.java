@@ -11,6 +11,8 @@ public class ApplicationRunner {
         ClientController ctr = (ClientController) ctx.getBean("idCtrl");
 
         Client client = new Client("OMAR");
+        ClientVip clientVip = new ClientVip("Rachid", "premium");
+        ClientNormal clientNormal = new ClientNormal("Mouad", 3);
 
         //Promotion
         List<Promotion> promotions = Arrays.asList(new Promotion("remise 10%"),
@@ -46,5 +48,7 @@ public class ApplicationRunner {
 
         //Save client and facture
         ctr.save(client);
+        ctr.save(clientNormal);
+        ctr.save(clientVip);
     }
 }

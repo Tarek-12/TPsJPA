@@ -1,17 +1,23 @@
-<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "https://www.springframework.org/dtd/spring-beans-2.0.dtd">
-<beans>
-    <bean id="idCtrl" class="presentation.ClientController">
-        <property name="service" ref="s1" />
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation= "http://www.springframework.org/schema/beans
+                            http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                            http://www.springframework.org/schema/context
+                            http://www.springframework.org/schema/context/spring-context-3.0.xsd
+                            http://www.springframework.org/schema/tx
+                            http://www.springframework.org/schema/tx/spring-tx.xsd">
+       <tx:annotation-driven />
+    <context:component-scan base-package="dao" />
+    <context:component-scan base-package="services" />
+    <context:component-scan base-package="presentation" />
+
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="persistenceUnitName" value="unit_client" />
     </bean>
-    <bean id="s1" class="services.ClientServiceImpl">
-        <property name="dao" ref="d1" />
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory" />
     </bean>
-    <bean id="d1" class="dao.ClientDaoImpl" />
-    <!--<bean id="idFctrl" class="presentation.FactureController">
-        <property name="service" ref="s2" />
-    </bean>
-    <bean id="s2" class="services.FactureServiceImpl">
-        <property name="dao" ref="d2" />
-    </bean>
-    <bean id="d2" class="dao.FactureDaoImpl" />-->
 </beans>

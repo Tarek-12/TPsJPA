@@ -1,16 +1,16 @@
 package presentation;
 
 import models.Client;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import services.IClientService;
 
 import java.util.List;
 
+@Controller("idCtrl")
 public class ClientController {
+    @Autowired
     IClientService service;
-
-    public void setService(IClientService service) {
-        this.service = service;
-    }
 
     public Client save(Client c) {
         return service.save(c);

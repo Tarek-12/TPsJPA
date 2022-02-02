@@ -2,16 +2,18 @@ package services;
 
 import dao.IClientDao;
 import models.Client;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@Service
+@Transactional
 public class ClientServiceImpl implements IClientService{
 
+    @Autowired
     IClientDao dao;
-
-    public void setDao(IClientDao dao) {
-        this.dao = dao;
-    }
 
     @Override
     public Client save(Client c) {
