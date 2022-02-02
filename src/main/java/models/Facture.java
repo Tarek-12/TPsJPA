@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -14,7 +15,7 @@ import java.util.List;
 public class Facture {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private long id_facture;
     private double amount;
     private String description;
 
@@ -22,9 +23,17 @@ public class Facture {
     @JoinColumn(name = "client_id")
     private Client client;
 
-    public Facture(double amount, String description) {
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "facture")
+    private List<LigneFacture> ligneFactures = new ArrayList<>();
+
+    public Facture(double amount, String description, Client client) {
         this.amount = amount;
         this.description = description;
+        this.client = client;
     }
+
     public Facture() {}
+    public void addFacture(LigneFacture l){
+        ligneFactures.add(l);
+    }
 }

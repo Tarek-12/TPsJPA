@@ -13,7 +13,7 @@ import javax.persistence.*;
 public class CarteFidelio {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private long id_carteFidelio;
     private String code;
 
     @OneToOne

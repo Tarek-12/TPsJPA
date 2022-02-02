@@ -25,9 +25,12 @@ public class ClientDaoImpl implements IClientDao{
     @Override
     public Client update(Client c) {
         em.getTransaction().begin();
-        Client client = em.find(Client.class, c.getId());
+        //Methode1
+        Client client = em.find(Client.class, c.getId_client());
         client.setName(c.getName());
         em.persist(c);
+        //Methode2
+        //em.merge(c);
         em.getTransaction().commit();
         return null;
     }
@@ -43,6 +46,7 @@ public class ClientDaoImpl implements IClientDao{
         return em.find(Client.class, idClient);
     }
     @Override
+    //Methode1
     public List<Client> findAll() {
         em.getTransaction().begin();
         CriteriaBuilder cb = em.getCriteriaBuilder();
@@ -52,4 +56,9 @@ public class ClientDaoImpl implements IClientDao{
         TypedQuery<Client> allQuery =em.createQuery(all);
         return allQuery.getResultList();
     }
+    //Methode2
+    /*public List<Client> findAll() {
+        return em.createQuery("from Client ", Client.class).getResultList();
+    }*/
+
 }

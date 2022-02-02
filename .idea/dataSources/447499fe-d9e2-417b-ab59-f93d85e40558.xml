@@ -912,5 +912,223 @@ SELECT|sys.sys_config
       <ObjectGrants>SELECT,INSERT,UPDATE,DELETE,CREATE,DROP,RELOAD,SHUTDOWN,PROCESS,FILE,REFERENCES,INDEX,ALTER,SHOW DATABASES,SUPER,CREATE TEMPORARY TABLES,LOCK TABLES,EXECUTE,REPLICATION SLAVE,REPLICATION CLIENT,CREATE VIEW,SHOW VIEW,CREATE ROUTINE,ALTER ROUTINE,CREATE USER,EVENT,TRIGGER,CREATE TABLESPACE,CREATE ROLE,DROP ROLE!
 </ObjectGrants>
     </user>
+    <table id="285" parent="5" name="adresse"/>
+    <table id="286" parent="5" name="cartefidelio"/>
+    <table id="287" parent="5" name="client"/>
+    <table id="288" parent="5" name="client_promotion"/>
+    <table id="289" parent="5" name="facture"/>
+    <table id="290" parent="5" name="lignefacture"/>
+    <table id="291" parent="5" name="produit"/>
+    <table id="292" parent="5" name="promotion"/>
+    <column id="293" parent="285" name="id_Adresse">
+      <Position>1</Position>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
+    </column>
+    <column id="294" parent="285" name="avenue">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+    </column>
+    <column id="295" parent="285" name="pays">
+      <Position>3</Position>
+      <DataType>varchar(255)|0s</DataType>
+    </column>
+    <column id="296" parent="285" name="ville">
+      <Position>4</Position>
+      <DataType>varchar(255)|0s</DataType>
+    </column>
+    <column id="297" parent="285" name="client_id">
+      <Position>5</Position>
+      <DataType>bigint|0s</DataType>
+    </column>
+    <index id="298" parent="285" name="FKir08q8mdywa47gwsm9xxwsx6c">
+      <ColNames>client_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="299" parent="285" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id_Adresse</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="300" parent="285" name="FKir08q8mdywa47gwsm9xxwsx6c">
+      <ColNames>client_id</ColNames>
+      <RefTableName>client</RefTableName>
+      <RefColNames>id_client</RefColNames>
+    </foreign-key>
+    <column id="301" parent="286" name="id_carteFidelio">
+      <Position>1</Position>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
+    </column>
+    <column id="302" parent="286" name="code">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+    </column>
+    <column id="303" parent="286" name="client_id">
+      <Position>3</Position>
+      <DataType>bigint|0s</DataType>
+    </column>
+    <index id="304" parent="286" name="FK804xbth7w7ruph185ykcss90x">
+      <ColNames>client_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="305" parent="286" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id_carteFidelio</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="306" parent="286" name="FK804xbth7w7ruph185ykcss90x">
+      <ColNames>client_id</ColNames>
+      <RefTableName>client</RefTableName>
+      <RefColNames>id_client</RefColNames>
+    </foreign-key>
+    <column id="307" parent="287" name="id_client">
+      <Position>1</Position>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
+    </column>
+    <column id="308" parent="287" name="name">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+    </column>
+    <key id="309" parent="287" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id_client</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="310" parent="288" name="client_fk">
+      <Position>1</Position>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="311" parent="288" name="promotion_fk">
+      <Position>2</Position>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="312" parent="288" name="FKmoyfg3hj1khmmaqt7fk1cpdbi">
+      <ColNames>client_fk</ColNames>
+      <Type>btree</Type>
+    </index>
+    <index id="313" parent="288" name="FK3vljpqpju2309jc62exu84g3r">
+      <ColNames>promotion_fk</ColNames>
+      <Type>btree</Type>
+    </index>
+    <foreign-key id="314" parent="288" name="FKmoyfg3hj1khmmaqt7fk1cpdbi">
+      <ColNames>client_fk</ColNames>
+      <RefTableName>client</RefTableName>
+      <RefColNames>id_client</RefColNames>
+    </foreign-key>
+    <foreign-key id="315" parent="288" name="FK3vljpqpju2309jc62exu84g3r">
+      <ColNames>promotion_fk</ColNames>
+      <RefTableName>promotion</RefTableName>
+      <RefColNames>id_promotion</RefColNames>
+    </foreign-key>
+    <column id="316" parent="289" name="id_facture">
+      <Position>1</Position>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
+    </column>
+    <column id="317" parent="289" name="amount">
+      <Position>2</Position>
+      <DataType>double|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="318" parent="289" name="description">
+      <Position>3</Position>
+      <DataType>varchar(255)|0s</DataType>
+    </column>
+    <column id="319" parent="289" name="client_id">
+      <Position>4</Position>
+      <DataType>bigint|0s</DataType>
+    </column>
+    <index id="320" parent="289" name="FKhnasi6n05kllawhofl2f0s1rj">
+      <ColNames>client_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="321" parent="289" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id_facture</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="322" parent="289" name="FKhnasi6n05kllawhofl2f0s1rj">
+      <ColNames>client_id</ColNames>
+      <RefTableName>client</RefTableName>
+      <RefColNames>id_client</RefColNames>
+    </foreign-key>
+    <column id="323" parent="290" name="ID_FACTURE">
+      <Position>1</Position>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="324" parent="290" name="ID_PRODUIT">
+      <Position>2</Position>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="325" parent="290" name="qte">
+      <Position>3</Position>
+      <DataType>double|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="326" parent="290" name="FKnh8bsdgh3kkvvm2sy115s294m">
+      <ColNames>ID_PRODUIT</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="327" parent="290" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ID_FACTURE
+ID_PRODUIT</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="328" parent="290" name="FK5oll78ew8kgkxvvtixic7dxc5">
+      <ColNames>ID_FACTURE</ColNames>
+      <RefTableName>facture</RefTableName>
+      <RefColNames>id_facture</RefColNames>
+    </foreign-key>
+    <foreign-key id="329" parent="290" name="FKnh8bsdgh3kkvvm2sy115s294m">
+      <ColNames>ID_PRODUIT</ColNames>
+      <RefTableName>produit</RefTableName>
+      <RefColNames>id_produit</RefColNames>
+    </foreign-key>
+    <column id="330" parent="291" name="id_produit">
+      <Position>1</Position>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
+    </column>
+    <column id="331" parent="291" name="name">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+    </column>
+    <column id="332" parent="291" name="price">
+      <Position>3</Position>
+      <DataType>double|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="333" parent="291" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id_produit</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="334" parent="292" name="id_promotion">
+      <Position>1</Position>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
+    </column>
+    <column id="335" parent="292" name="description">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+    </column>
+    <key id="336" parent="292" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id_promotion</ColNames>
+      <Primary>1</Primary>
+    </key>
   </database-model>
 </dataSource>

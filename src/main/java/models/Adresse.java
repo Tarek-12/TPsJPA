@@ -1,7 +1,6 @@
 package models;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,12 +13,12 @@ import javax.persistence.*;
 public class Adresse {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private long id_Adresse;
     private String avenue;
     private String ville;
     private String pays;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "client_id")
     private Client client;
 

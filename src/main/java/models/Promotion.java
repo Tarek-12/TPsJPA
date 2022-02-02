@@ -13,7 +13,7 @@ import javax.persistence.*;
 public class Promotion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private long id_promotion;
     private String description;
 
     public Promotion(String description) {

@@ -7,11 +7,11 @@
         <property name="dao" ref="d1" />
     </bean>
     <bean id="d1" class="dao.ClientDaoImpl" />
-    <bean id="idProd" class="presentation.ProduitController">
+    <!--<bean id="idFctrl" class="presentation.FactureController">
         <property name="service" ref="s2" />
     </bean>
-    <bean id="s2" class="services.ProduitServiceImpl">
+    <bean id="s2" class="services.FactureServiceImpl">
         <property name="dao" ref="d2" />
     </bean>
-    <bean id="d2" class="dao.ProduitDaoImpl" />
+    <bean id="d2" class="dao.FactureDaoImpl" />-->
 </beans>
