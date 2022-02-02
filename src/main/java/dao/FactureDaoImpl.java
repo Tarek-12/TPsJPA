@@ -1,13 +1,17 @@
 package dao;
 
 import models.Facture;
-import javax.persistence.*;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import java.util.List;
 
-public class FactureDaoImpl implements IFactureDao{
+public class FactureDaoImpl implements IFactureDao {
 
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("unit_factures");
     EntityManager em = emf.createEntityManager();

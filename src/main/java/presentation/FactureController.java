@@ -12,9 +12,7 @@ public class FactureController {
         this.service = service;
     }
 
-    public Facture save(Facture f){
-        return service.save(f);
-    }
+    public Facture save(Facture f){ return service.save(f); }
     public Facture update(Facture f) {
         return service.update(f);
     }
