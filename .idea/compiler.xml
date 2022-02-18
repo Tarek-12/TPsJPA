@@ -9,6 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="TP10" />
         <module name="TP9JPA" />
+        <module name="TP11" />
       </profile>
     </annotationProcessing>
   </component>

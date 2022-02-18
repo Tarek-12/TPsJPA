@@ -1,6 +1,7 @@
 import models.*;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import presentation.AdresseController;
 import presentation.ClientController;
 
 import java.util.*;
@@ -9,46 +10,45 @@ public class ApplicationRunner {
     public static void main(String[] args) {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
         ClientController ctr = (ClientController) ctx.getBean("idCtrl");
+        AdresseController adr = (AdresseController) ctx.getBean("idAdrs");
 
-        Client client = new Client("OMAR");
-        ClientVip clientVip = new ClientVip("Rachid", "premium");
-        ClientNormal clientNormal = new ClientNormal("Mouad", 3);
+        Client client1 = new Client("Omar");
+        Client client2 = new Client("Said");
+        Client client3 = new Client("Ahmed");
 
-        //Promotion
-        List<Promotion> promotions = Arrays.asList(new Promotion("remise 10%"),
-                                                   new Promotion("solde 40%"));
-        client.setPromotions(promotions);
+        Adresse a1 = new Adresse("Bd Med v", "Casablanca", "Maroc");
+        Adresse a2 = new Adresse("Bd Hassan 2", "Rabat", "Maroc");
 
-        //CarteFidelio
-        CarteFidelio carteFidelio = new CarteFidelio("A456231656");
-        carteFidelio.setClient(client);
-        client.setCarteFidelio(carteFidelio);
+        client1.setAdresses(a1);
+        a1.setClient(client1);
+        client2.setAdresses(a2);
+        a2.setClient(client2);
 
-        //Address
-        Adresse adresse = new Adresse("Bd Med V, Rue 14, N15", "Casablanca", "Maroc");
-        client.setAdresses(adresse);
-        adresse.setClient(client);
+        //Test 1 => save 3 clients
+        client1=ctr.save(client1);
+        client2=ctr.save(client2);
+        client3=ctr.save(client3);
 
-        //Facture
-        List<Facture> factures = Arrays.asList(new Facture(1600.0d, "facture 1", client),
-                                               new Facture(8999.75d, "facture 2", client));
+        // Test2 => getAll Clients before modify and remove
+        ctr.getAll().stream()
+                .forEach(i-> System.out.println(i));
 
-        //Produit
-        Produit p1 = new Produit("Disque dur ssd 512 Go", 800.0d);
-        Produit p2 = new Produit("TV Samsung 50' ", 8999.75d);
+        // Test3 => getOne Client service
+        System.out.println(ctr.getOne(1));
 
-        //LigneFacture
-        LigneFacture l1 =new LigneFacture(2, p1, factures.get(0));
-        LigneFacture l2= new LigneFacture(1, p2,factures.get(1));
+        // Test4 => modify Client service
+        client1.setName("Hassan");
+        ctr.modify(client1);
 
-        //Remplissage des factures
-        factures.get(0).addFacture(l1);
-        factures.get(1).addFacture(l2);
-        client.setFactures(factures);
+        // Test5 => remove Client service
+        ctr.remove(2);
 
-        //Save client and facture
-        ctr.save(client);
-        ctr.save(clientNormal);
-        ctr.save(clientVip);
+        // Test getAll Client after modify and remove
+        ctr.getAll().stream()
+                .forEach(i-> System.out.println(i));
+
+        // Test getClient by names
+        ctr.findByName("ahmed").stream()
+                .forEach(i-> System.out.println(i));
     }
 }

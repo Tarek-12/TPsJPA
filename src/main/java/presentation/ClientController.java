@@ -15,16 +15,13 @@ public class ClientController {
     public Client save(Client c) {
         return service.save(c);
     }
-    public Client update(Client c) {
-        return service.update(c);
+    public Client modify(Client c) { return service.modify(c); }
+    public void remove(long idClient) {
+        service.remove(idClient);
     }
-    public void deleteById(long idClient) {
-        service.deleteById(idClient);
+    public Client getOne(long idClient) { return service.getOne(idClient); }
+    public List<Client> getAll() {
+        return service.getAll();
     }
-    public Client findById(long idClient) {
-        return service.findById(idClient);
-    }
-    public List<Client> findAll() {
-        return service.findAll();
-    }
+    public List<Client> findByName(String name) { return service.findByName(name); }
 }

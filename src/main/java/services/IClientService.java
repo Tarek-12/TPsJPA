@@ -6,8 +6,9 @@ import java.util.List;
 
 public interface IClientService {
     Client save(Client c);
-    Client update(Client c);
-    void deleteById(long idClient);
-    Client findById(long idClient);
-    List<Client> findAll();
+    Client modify(Client c);
+    void remove(long idClient);
+    Client getOne(long idClient);
+    List<Client> getAll();
+    List<Client> findByName(String name);
 }
