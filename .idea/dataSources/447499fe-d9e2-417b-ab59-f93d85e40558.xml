@@ -918,7 +918,7 @@ SELECT|sys.sys_config
     <table id="286" parent="5" name="adresse"/>
     <table id="287" parent="5" name="client"/>
     <table id="288" parent="5" name="hibernate_sequences"/>
-    <column id="289" parent="286" name="id_Adresse">
+    <column id="289" parent="286" name="id_adresse">
       <Position>1</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
@@ -940,16 +940,16 @@ SELECT|sys.sys_config
       <Position>5</Position>
       <DataType>bigint|0s</DataType>
     </column>
-    <index id="294" parent="286" name="FKir08q8mdywa47gwsm9xxwsx6c">
+    <index id="294" parent="286" name="FKmy892njibrrt3k9a9s3l6xvae">
       <ColNames>client_id</ColNames>
       <Type>btree</Type>
     </index>
     <key id="295" parent="286" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
-      <ColNames>id_Adresse</ColNames>
+      <ColNames>id_adresse</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="296" parent="286" name="FKir08q8mdywa47gwsm9xxwsx6c">
+    <foreign-key id="296" parent="286" name="FKmy892njibrrt3k9a9s3l6xvae">
       <ColNames>client_id</ColNames>
       <RefTableName>client</RefTableName>
       <RefColNames>id_client</RefColNames>
