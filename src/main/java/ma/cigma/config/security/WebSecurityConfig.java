@@ -32,9 +32,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().and()
                 .authorizeRequests()
-                .antMatchers("/add-client", "/show-client/**", "/edit-client/**").hasRole("USER")
                 .antMatchers("/delete-client/**").hasRole("ADMIN")
-                .antMatchers("/clients").hasAnyRole("USER","ADMIN")
+                .antMatchers("/clients", "/add-client", "/show-client/**", "/edit-client/**").hasAnyRole("USER","ADMIN")
                 .anyRequest()
                 .authenticated()
                 .and()
